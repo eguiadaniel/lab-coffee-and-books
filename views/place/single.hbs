@@ -1,3 +1,10 @@
 <h1>{{place.name}}</h1>
-<span>{{place.location.coordinates.[1]}}</span>
+<span>Longitude:{{place.location.coordinates.[1]}}</span>
 <br>
+<span>Latitude:{{place.location.coordinates.[0]}}</span>
+<br>
+<small>Type of place: {{place.type}}</small>
+<br/>
+<a href="/place/{{place._id}}/delete">Delete Place</a>
+</br>
+<a href="/place/{{place._id}}/update">Update Place</a>
