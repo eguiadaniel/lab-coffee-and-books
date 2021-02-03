@@ -4,6 +4,13 @@ const express = require('express');
 const router = new express.Router();
 const Place = require('./../models/places');
 
+router.get('/video/:id', (req, res, next) => {
+  //res.set('Content-Type', 'text/plain');
+  //res.set('Content-Type', 'application/vnd.ms-excel');
+  res.set('Content-Type', 'text/plain');
+  res.send('{"Hola":5}');
+});
+
 router.get('/create', (req, res, next) => {
   res.render('place/new');
 });

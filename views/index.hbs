@@ -5,10 +5,10 @@
 <h1>Create New Place</h1>
  
 <div id="map"></div>
+<button id="where-am-i">Where am I?</button>
 
 <form method="GET" action="/place/search">
 
-<button id="where-am-i">Where am I?</button>
 
   <label for="input-distance">Set distance</label>
   <input id="input-distance" type="range" name="distance" min="0" max="10000" step="1000"/>
@@ -22,3 +22,29 @@
 
   <button>Find places!</button>
 </form>
+
+<script>
+  const whereAmITrigger = document.getElementById('where-am-i');
+  const latitudeInput = document.getElementById('input-latitude');
+  const longitudeInput = document.getElementById('input-longitude');
+
+  const getUSerLocation = (options) => new Promise ((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject, options))
+
+  whereAmITrigger.addEventListener('click', () => {
+    getUSerLocation()
+    .then(location) => {
+      
+      const latitude = location.coords.latitude;
+      const longitude = location.coords.longitude;
+
+      latitudeInput.value = latitude;
+      longitudeInput.value = longitude;
+
+    }.catch(error) => {
+      console.log('There was an error');
+      console.log(error);
+    }
+
+  })
+
+</script>
